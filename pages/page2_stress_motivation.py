@@ -59,7 +59,7 @@ The bar chart titled Average Stress, Distraction and Motivation Challenges shows
 # -----------------------------
 # SECTION 2: Heatmap
 # -----------------------------
-st.subheader("Heatmap of Correlation Between Stress, Distraction and Motivation")
+st.subheader("2. Heatmap of Correlation Between Stress, Distraction and Motivation")
 
 df_for_heatmap = df[['obs_time', 'obs_distraction', 'Motivation']].copy()
 df_for_heatmap = df_for_heatmap.rename(columns={
@@ -85,7 +85,7 @@ The heatmap shows correlation between stress, distraction and motivation. It sho
 # -----------------------------
 # SECTION 3: Motivation Level Frequency
 # -----------------------------
-st.subheader("Bar Chart of Motivation Level Frequency")
+st.subheader("3. Bar Chart of Motivation Level Frequency")
 
 # Count frequency of motivation levels
 motivation_counts = df["Motivation"].value_counts().sort_index()
@@ -110,7 +110,7 @@ The bar chart shows Motivation Level Frequency of students. The frequency of stu
 # -----------------------------
 # SECTION 4: Box Plot
 # -----------------------------
-st.subheader("Box plot of Motivation Across Different Distraction Levels")
+st.subheader("4. Box plot of Motivation Across Different Distraction Levels")
 
 fig, ax = plt.subplots(figsize=(8, 5))
 sns.boxplot(
@@ -133,7 +133,7 @@ This box plot represents the relationship between student motivation and the lev
 # -----------------------------
 # SECTION 5: Line Chart
 # -----------------------------
-st.subheader("Line Chart of Stress Level Across Different Distraction Levels")
+st.subheader("5. Line Chart of Stress Level Across Different Distraction Levels")
 
 stress_motivation = df.groupby('obs_time')['obs_motivation'].mean()
 
