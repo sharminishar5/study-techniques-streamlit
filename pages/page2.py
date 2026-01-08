@@ -92,7 +92,7 @@ motivation_counts = df["Motivation"].value_counts().sort_index()
 
 # Create the bar chart
 fig, ax = plt.subplots(figsize=(8,5))
-ax.bar(motivation_counts.index, motivation_counts.values, color='skyblue')
+ax.bar(motivation_counts.index, motivation_counts.values, color='blue')
 ax.set_xlabel("Motivation Level")
 ax.set_ylabel("Number of Students")
 ax.set_title("Motivation Level Frequency")
