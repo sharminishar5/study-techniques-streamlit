@@ -10,8 +10,10 @@ import os
 st.title("Stress, Distraction & Motivation by Sharmini")
 
 st.markdown("""
-This section presents visualizations related to stress, distraction, and motivation factors among students. The visualizations aim to explore how these factors influence student’s learning experiences and academic engagement. By applying appropriate scientific visualization techniques, patterns, trends, and variations in stress levels, sources of distraction, and motivation can be clearly identified and interpreted to support data driven insights.
-""")
+<p style="text-align: justify;">
+This section presents visualizations related to stress, distraction, and motivation factors among students. The visualizations aim to explore how these factors influence students’ learning experiences and academic engagement. By applying appropriate scientific visualization techniques, patterns, trends, and variations in stress levels, sources of distraction, and motivation can be clearly identified and interpreted to support data-driven insights.
+</p>
+""", unsafe_allow_html=True)
 
 # -----------------------------
 # Load Dataset
@@ -158,7 +160,7 @@ st.pyplot(fig)
 
 st.markdown("""
 <p style="text-align: justify;">
-This line chart shows the stress level across different distraction levels, which scale between 1 and 5 (1 being low distraction and 5 being high distraction). Stress levels are mapped as follows: 1 = never, 2 = rarely, 3 = sometimes, 4 = often, and 5 = very often. The graph demonstrates a positive relationship between distraction and stress. Average stress levels increase steadily as distraction rises from 1 to 5. Students with low distraction levels (approximately 1-2) are the least stressed, indicating their stress is manageable when they can concentrate and avoid distractions. At moderate distraction levels (~3), stress levels begin to rise. At higher distraction levels (4-5), stress peaks, implying that frequent disruptions—especially from phones, social media, or environmental noise—contribute significantly to student stress. The more a person is distracted, the more stress they report, forming a cyclic pattern where distractions reduce focus, increase study time, and cause anxiety about performance. This visualization emphasizes the importance of controlling distractions to reduce student stress. Programs encouraging digital discipline, focused study areas, and mindful device use may be effective in mitigating stress.
+This line chart shows the stress level across different distraction levels, which scale between 1 and 5 (1 being low distraction and 5 being high distraction). Stress levels are mapped as follows: 1 = never, 2 = rarely, 3 = sometimes, 4 = often, and 5 = very often. The graph demonstrates a positive relationship between distraction and stress. Average stress levels increase steadily as distraction rises from 1 to 5. Students with low distraction levels (approximately 1-2) are the least stressed, indicating their stress is manageable when they can concentrate and avoid distractions. At moderate distraction levels (~3), stress levels begin to rise. At higher distraction levels (4-5), stress peaks, implying that frequent disruptions, especially from phones, social media, or environmental noise contribute significantly to student stress. The more a person is distracted, the more stress they report, forming a cyclic pattern where distractions reduce focus, increase study time, and cause anxiety about performance. This visualization emphasizes the importance of controlling distractions to reduce student stress. Programs encouraging digital discipline, focused study areas, and mindful device use may be effective in mitigating stress.
 </p>
 """, unsafe_allow_html=True)
 
