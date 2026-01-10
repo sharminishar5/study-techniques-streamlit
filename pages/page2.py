@@ -11,7 +11,7 @@ st.title("Stress, Distraction & Motivation by Sharmini")
 
 st.markdown("""
 <p style="text-align: justify;">
-This section presents visualizations related to stress, distraction, and motivation factors among students. The visualizations aim to explore how these factors influence students’ learning experiences and academic engagement. By applying appropriate scientific visualization techniques, patterns, trends, and variations in stress levels, sources of distraction, and motivation can be clearly identified and interpreted to support data-driven insights.
+Objective: To analyze and compare the average levels of stress, distraction, and motivation among students in order to identify how these factors influence a student's academic performance.
 </p>
 """, unsafe_allow_html=True)
 
