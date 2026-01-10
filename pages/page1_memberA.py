@@ -70,13 +70,13 @@ st.caption(
 
 st.markdown("""
 **Key Insight:**  
-*This chart shows the average frequency of study techniques used by students.
+* This chart shows the average frequency of study techniques used by students.
 
-*From the chart, we can see that students most frequently use summarising notes, watching videos, doing practice exercises, and reading notes.
+* From the chart, we can see that students most frequently use summarising notes, watching videos, doing practice exercises, and reading notes.
 
-*In contrast, techniques such as flashcards and teaching others are used less often.
+* In contrast, techniques such as flashcards and teaching others are used less often.
 
-*This suggests that students prefer familiar and independent study methods rather than more active or collaborative techniques.”.
+* This suggests that students prefer familiar and independent study methods rather than more active or collaborative techniques.”.
 """)
 
 st.markdown("---")
