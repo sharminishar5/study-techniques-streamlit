@@ -1,19 +1,24 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+import plotly.express as px
 
 # ---------------------------------------------------
-# App Title & Description
+# Page Configuration
 # ---------------------------------------------------
-st.set_page_config(page_title="Student Learning Effectiveness Analysis", layout="wide")
+st.set_page_config(
+    page_title="Student Learning Effectiveness Analysis",
+    layout="wide"
+)
 
+# ---------------------------------------------------
+# Title
+# ---------------------------------------------------
 st.title("📊 Member C Case Study")
-st.subheader("Sleep, Learning Obstacles, and Support Needs Analysis")
+st.subheader("Sleep, Learning Obstacles, and Support Needs")
 
 st.write("""
-This dashboard analyzes how **sleep quality**, **learning obstacles**, and **support systems**
-influence **students' learning effectiveness**.
+This dashboard examines how **sleep quality**, **learning obstacles**, and **support systems**
+influence **students’ learning effectiveness**.
 """)
 
 # ---------------------------------------------------
@@ -24,125 +29,160 @@ def load_data():
     return pd.read_csv("cleaned_student_study_dataset_FINAL.csv")
 
 df = load_data()
-
-st.success("Dataset loaded successfully!")
+st.success("Dataset loaded successfully")
 
 # ---------------------------------------------------
-# Visualization 1: Learning Obstacles vs Learning Effectiveness
+# 1. Learning Obstacles vs Learning Effectiveness
 # ---------------------------------------------------
 st.header("1️⃣ Learning Obstacles vs Learning Effectiveness")
 
-avg_eff_obstacles = df.groupby("obstacles_index")["learning_effectiveness"].mean()
+avg_eff_obstacles = (
+    df.groupby("obstacles_index", as_index=False)["learning_effectiveness"]
+    .mean()
+)
 
-fig1, ax1 = plt.subplots(figsize=(10, 6))
-ax1.bar(avg_eff_obstacles.index.round(2).astype(str), avg_eff_obstacles.values)
-ax1.set_xlabel("Level of Learning Obstacles")
-ax1.set_ylabel("Average Learning Effectiveness")
-ax1.set_title("Learning Obstacles vs Learning Effectiveness")
-plt.xticks(rotation=45, ha='right')
-plt.tight_layout()
+fig1 = px.bar(
+    avg_eff_obstacles,
+    x="obstacles_index",
+    y="learning_effectiveness",
+    labels={
+        "obstacles_index": "Level of Learning Obstacles",
+        "learning_effectiveness": "Average Learning Effectiveness"
+    },
+    title="Learning Obstacles vs Learning Effectiveness"
+)
 
-st.pyplot(fig1)
+st.plotly_chart(fig1, use_container_width=True)
 
 st.markdown("""
 **Interpretation:**  
-Higher obstacle levels tend to be associated with lower learning effectiveness.
+The bar chart illustrates the relationship between learning obstacles and students’ learning effectiveness.  
+As the level of learning obstacles increases, the average learning effectiveness generally decreases.  
+This indicates that higher academic or personal barriers negatively impact students’ learning outcomes.
 """)
 
 # ---------------------------------------------------
-# Visualization 2: Distribution of Support Needs (Pie Chart)
+# 2. Distribution of Individual Support Needs
 # ---------------------------------------------------
 st.header("2️⃣ Distribution of Individual Support Needs")
 
-all_support_needs = df["support_needed"].str.split(', ').explode()
-individual_support_counts = all_support_needs.value_counts()
+all_support_needs = df["support_needed"].str.split(", ").explode()
+support_counts = all_support_needs.value_counts()
 
 N = 7
-top_N_supports = individual_support_counts.head(N)
-other_supports_count = individual_support_counts.iloc[N:].sum()
+top_supports = support_counts.head(N)
+other_count = support_counts.iloc[N:].sum()
 
-if other_supports_count > 0:
-    plot_data = pd.concat([top_N_supports, pd.Series({'Other': other_supports_count})])
+if other_count > 0:
+    plot_data = pd.concat([top_supports, pd.Series({"Other": other_count})])
 else:
-    plot_data = top_N_supports
+    plot_data = top_supports
 
-fig2, ax2 = plt.subplots(figsize=(8, 8))
-ax2.pie(
-    plot_data.values,
-    labels=plot_data.index,
-    autopct='%1.1f%%',
-    startangle=90
+support_df = plot_data.reset_index()
+support_df.columns = ["Support Type", "Count"]
+
+fig2 = px.bar(
+    support_df,
+    x="Count",
+    y="Support Type",
+    orientation="h",
+    title="Distribution of Individual Support Needs",
+    labels={"Count": "Number of Students"}
 )
-ax2.set_title("Distribution of Individual Support Needs")
-ax2.axis('equal')
 
-st.pyplot(fig2)
+st.plotly_chart(fig2, use_container_width=True)
 
 st.markdown("""
 **Interpretation:**  
-Students most frequently require academic, emotional, and motivational support.
+The chart shows the most common types of support required by students.  
+Academic, emotional, and motivational supports are the most frequently reported needs.  
+This highlights the importance of holistic support systems in improving students’ learning experiences.
 """)
 
 # ---------------------------------------------------
-# Visualization 3: Boxplot – Learning Effectiveness vs Obstacles
+# 3. Learning Effectiveness vs Learning Obstacles (Boxplot)
 # ---------------------------------------------------
-st.header("3️⃣ Learning Effectiveness vs Learning Obstacles (Boxplot)")
+st.header("3️⃣ Learning Effectiveness vs Learning Obstacles")
 
-fig3, ax3 = plt.subplots(figsize=(6, 5))
-ax3.boxplot(
-    [df["learning_effectiveness"], df["obstacles_index"]],
-    labels=["Learning Effectiveness", "Obstacles Index"]
+boxplot_df = df[["learning_effectiveness", "obstacles_index"]].melt(
+    var_name="Variable",
+    value_name="Score"
 )
-ax3.set_title("Learning Effectiveness vs Learning Obstacles")
 
-st.pyplot(fig3)
+fig3 = px.box(
+    boxplot_df,
+    x="Variable",
+    y="Score",
+    title="Learning Effectiveness vs Learning Obstacles"
+)
+
+st.plotly_chart(fig3, use_container_width=True)
 
 st.markdown("""
 **Interpretation:**  
-The boxplot highlights variability and potential outliers in learning effectiveness
-and obstacle levels among students.
+The boxplot compares the distribution and variability of learning effectiveness and learning obstacles.  
+Noticeable differences in spread and outliers suggest unequal learning conditions among students.  
+Students facing higher obstacles may experience reduced learning effectiveness.
 """)
 
 # ---------------------------------------------------
-# Visualization 4: Support Systems vs Learning Effectiveness
+# 4. Support Systems vs Learning Effectiveness
 # ---------------------------------------------------
 st.header("4️⃣ Support Systems vs Learning Effectiveness")
 
-support_eff = df.groupby("support_index")["learning_effectiveness"].mean()
+support_eff = (
+    df.groupby("support_index", as_index=False)["learning_effectiveness"]
+    .mean()
+)
 
-fig4, ax4 = plt.subplots(figsize=(8, 5))
-ax4.plot(support_eff.index, support_eff.values, marker='o')
-ax4.set_xlabel("Support System Index")
-ax4.set_ylabel("Learning Effectiveness")
-ax4.set_title("Support Systems vs Learning Effectiveness")
+fig4 = px.line(
+    support_eff,
+    x="support_index",
+    y="learning_effectiveness",
+    markers=True,
+    labels={
+        "support_index": "Support System Index",
+        "learning_effectiveness": "Learning Effectiveness"
+    },
+    title="Support Systems vs Learning Effectiveness"
+)
 
-st.pyplot(fig4)
+st.plotly_chart(fig4, use_container_width=True)
 
 st.markdown("""
 **Interpretation:**  
-Improved support systems are associated with higher learning effectiveness.
+The line chart demonstrates a positive relationship between support systems and learning effectiveness.  
+Learning effectiveness increases as the level of support systems improves.  
+This emphasizes the critical role of institutional and social support in student success.
 """)
 
 # ---------------------------------------------------
-# Visualization 5: Sleep Quality vs Learning Obstacles
+# 5. Sleep Quality vs Learning Obstacles
 # ---------------------------------------------------
 st.header("5️⃣ Sleep Quality vs Learning Obstacles")
 
-fig5, ax5 = plt.subplots(figsize=(8, 5))
-ax5.scatter(df["sleep_quality"], df["obstacles_index"])
-ax5.set_xlabel("Sleep Quality")
-ax5.set_ylabel("Obstacles Index")
-ax5.set_title("Sleep Quality vs Learning Obstacles")
+fig5 = px.scatter(
+    df,
+    x="sleep_quality",
+    y="obstacles_index",
+    labels={
+        "sleep_quality": "Sleep Quality",
+        "obstacles_index": "Obstacles Index"
+    },
+    title="Sleep Quality vs Learning Obstacles"
+)
 
-st.pyplot(fig5)
+st.plotly_chart(fig5, use_container_width=True)
 
 st.markdown("""
 **Interpretation:**  
-Poor sleep quality is linked to higher learning obstacles, affecting academic performance.
+The scatter plot illustrates the relationship between sleep quality and learning obstacles.  
+Students with poorer sleep quality tend to experience higher levels of learning obstacles.  
+This suggests that inadequate sleep may contribute to increased academic challenges.
 """)
 
 # ---------------------------------------------------
 # Footer
 # ---------------------------------------------------
 st.markdown("---")
-st.caption("Data Analysis Dashboard | Student Learning Effectiveness Study")
+st.caption("Student Learning Effectiveness Dashboard | Member C Case Study")
