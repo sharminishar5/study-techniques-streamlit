@@ -65,7 +65,7 @@ fig1.update_layout(
 st.plotly_chart(fig1, use_container_width=True)
 
 st.caption(
-    "This chart shows how often students use different study techniques on average."
+    "This bar chart shows how often students use different study techniques on average, based on a scale from 1 to 5."
 )
 
 st.markdown("""
@@ -76,7 +76,7 @@ st.markdown("""
 
 * In contrast, techniques such as flashcards and teaching others are used less often.
 
-* This suggests that students prefer familiar and independent study methods rather than more active or collaborative techniques.”.
+* This suggests that students prefer familiar and independent study methods rather than more active or collaborative techniques.
 """)
 
 st.markdown("---")
@@ -116,13 +116,18 @@ fig2.update_layout(
 st.plotly_chart(fig2, use_container_width=True)
 
 st.caption(
-    "This visualization highlights which study techniques students perceive as most effective."
+    "This bar chart shows how effective students believe each study technique is, based on a rating scale from 1 to 5."
 )
 
 st.markdown("""
 **Key Insight:**  
-Practice-based techniques and group study receive higher effectiveness ratings,
-suggesting that active learning strategies are more beneficial than passive ones.
+* This chart shows the perceived effectiveness of different study techniques.
+
+* From the results, practice-based learning has the highest effectiveness score, followed closely by watching educational videos and group study.
+
+* In contrast, flashcards are perceived as less effective compared to other techniques.
+
+* This indicates that students feel they learn better through active engagement, such as practicing and discussing, rather than passive memorisation
 """)
 
 st.markdown("---")
@@ -148,11 +153,19 @@ fig3 = px.imshow(
 
 st.plotly_chart(fig3, use_container_width=True)
 
+st.caption(
+    "This heatmap shows the correlation between how often students use certain study techniques and how effective they perceive those techniques to be."
+)
+
 st.markdown("""
 **Key Insight:**  
-Positive correlations indicate that study techniques used more frequently tend to be
-perceived as more effective, particularly for active learning strategies such as
-practice exercises and group study.
+* This heatmap shows the relationship between the frequency of study techniques and their perceived effectiveness.
+
+* Each cell represents the strength of the relationship between two variables, where warmer colors indicate a stronger positive correlation.
+
+* From the heatmap, we can see that practice-based learning and group study show positive correlations between frequency and effectiveness.
+
+* This means that students who use these techniques more often also tend to find them more effective.
 """)
 
 st.markdown("---")
@@ -174,10 +187,19 @@ fig4 = px.pie(
 
 st.plotly_chart(fig4, use_container_width=True)
 
+st.caption(
+    "This pie chart shows how students prefer to study."
+)
+
 st.markdown("""
 **Key Insight:**  
-While many students prefer studying alone, a significant proportion still value group study,
-highlighting the importance of both independent and collaborative learning environments.
+* This pie chart shows students’ preferred study style.
+
+* We can see that almost half of the students prefer switching between studying alone and studying with others, depending on the subject.
+
+* About 38% prefer studying alone, while a smaller group prefers studying mainly with peers.
+
+* This shows that most students do not rely on only one study style and tend to adapt their learning approach based on their needs
 """)
 
 st.markdown("---")
@@ -200,10 +222,20 @@ fig5 = px.bar(
 
 st.plotly_chart(fig5, use_container_width=True)
 
+st.caption(
+    "This bar chart shows when students prefer to study, based on their responses in the survey."
+)
+
+
 st.markdown("""
 **Key Insight:**  
-Students exhibit varied study time preferences, suggesting that flexible learning schedules
-may better support different study habits.
+* This chart shows students’ preferred study time.
+
+* We can see that most students either study late at night or do not have a fixed study time.
+
+* Fewer students prefer studying in the early morning, and only a small number study in the afternoon or evening.
+
+* This suggests that students have different daily routines and often choose study times that fit their personal schedules
 """)
 
 st.markdown("---")
