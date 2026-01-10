@@ -11,7 +11,7 @@ st.title("Stress, Distraction & Motivation by Sharmini")
 
 st.markdown("""
 <p style="text-align: justify;">
-Objective: To analyze and compare the average levels of stress, distraction, and motivation among students in order to identify how these factors influence a student's academic performance.
+Objective: To analyze the average levels of stress, distraction, and motivation among students and the relationships between these factors.
 </p>
 """, unsafe_allow_html=True)
 
