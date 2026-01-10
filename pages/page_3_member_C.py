@@ -20,9 +20,6 @@ st.markdown(
 # -------------------------------
 df = pd.read_csv("cleaned_student_study_dataset_FINAL.csv")
 
-st.write("Dataset Preview")
-st.dataframe(df.head())
-
 # -------------------------------
 # 1. Bar Chart - Learning Obstacles vs Learning Effectiveness
 # -------------------------------
