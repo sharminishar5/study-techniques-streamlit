@@ -192,8 +192,7 @@ st.markdown(
 st.subheader("Conclusion")
 
 st.markdown(
-    """
-    **Conclusion:**  
+    """  
     The analysis indicates that sleep quality, learning obstacles, and support needs are closely related 
     to students’ learning effectiveness. Better sleep and stronger support systems contribute to improved 
     performance, while increased obstacles negatively affect learning outcomes. Enhancing lifestyle habits 
