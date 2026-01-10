@@ -76,7 +76,7 @@ st.markdown("### 🎯 Research Objectives")
 st.markdown(
     """
     - To analyze the frequency and perceived effectiveness of different study techniques used by students
-    - To examine the impact of stress, distraction, and motivation on learning  
+    - To analyze the average levels of stress, distraction, and motivation among students and the relationships between these factors.  
     - To explore sleep patterns, learning obstacles, and support needs among students
     """
 )
