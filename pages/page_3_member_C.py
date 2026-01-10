@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # -------------------------------
-# Page Title & Objective
+# Title & Objective
 # -------------------------------
 st.title("Visualizations of Sleep, Obstacles and Support Needs")
 
@@ -19,6 +19,9 @@ st.markdown(
 # Load Dataset
 # -------------------------------
 df = pd.read_csv("cleaned_student_study_dataset_FINAL.csv")
+
+st.write("Dataset Preview")
+st.dataframe(df.head())
 
 # -------------------------------
 # 1. Bar Chart - Learning Obstacles vs Learning Effectiveness
@@ -44,10 +47,14 @@ fig_bar = px.bar(
 
 st.plotly_chart(fig_bar, use_container_width=True)
 
-st.write(
-    "This bar chart illustrates the average learning effectiveness across different levels of learning obstacles. "
-    "Students with fewer obstacles tend to achieve higher learning effectiveness. "
-    "As learning obstacles increase, learning effectiveness generally declines."
+st.markdown(
+    """
+    **Key Insights:**
+    - Lower learning obstacles are linked to higher learning effectiveness.
+    - Learning effectiveness declines as obstacles increase.
+    - Moderate obstacles already show a negative impact on performance.
+    - Reducing learning barriers may improve academic outcomes.
+    """
 )
 
 # -------------------------------
@@ -79,10 +86,14 @@ fig_pie = px.pie(
 
 st.plotly_chart(fig_pie, use_container_width=True)
 
-st.write(
-    "This pie chart shows the distribution of different support needs among students. "
-    "Certain types of support are more frequently required, indicating common challenges faced by students. "
-    "Less common support needs are grouped under 'Other' for clarity."
+st.markdown(
+    """
+    **Key Insights:**
+    - Academic and emotional support are the most common needs.
+    - A small number of support types dominate student requirements.
+    - Support needs vary across students, indicating diverse challenges.
+    - Identifying key needs helps prioritize support strategies.
+    """
 )
 
 # -------------------------------
@@ -104,10 +115,14 @@ fig_box = px.box(
 
 st.plotly_chart(fig_box, use_container_width=True)
 
-st.write(
-    "The box plot compares the distribution of learning effectiveness and obstacles index. "
-    "Learning effectiveness shows greater variability among students. "
-    "The obstacles index reflects differences in the level of challenges experienced."
+st.markdown(
+    """
+    **Key Insights:**
+    - Learning effectiveness varies widely among students.
+    - Some students perform well despite facing obstacles.
+    - Obstacles index is more concentrated, showing common challenges.
+    - Individual differences influence learning outcomes.
+    """
 )
 
 # -------------------------------
@@ -135,10 +150,14 @@ fig_line = px.line(
 
 st.plotly_chart(fig_line, use_container_width=True)
 
-st.write(
-    "This line chart demonstrates the relationship between support systems and learning effectiveness. "
-    "An increasing trend suggests that stronger support systems are associated with better learning outcomes. "
-    "This highlights the importance of adequate academic and emotional support."
+st.markdown(
+    """
+    **Key Insights:**
+    - Learning effectiveness improves as support increases.
+    - Strong support systems are linked to better performance.
+    - The trend shows a positive relationship overall.
+    - Support plays a crucial role in student success.
+    """
 )
 
 # -------------------------------
@@ -159,8 +178,27 @@ fig_scatter = px.scatter(
 
 st.plotly_chart(fig_scatter, use_container_width=True)
 
-st.write(
-    "This scatter plot explores the relationship between sleep quality and learning obstacles. "
-    "Students with better sleep quality generally experience fewer learning obstacles. "
-    "Poor sleep quality appears to be linked with increased academic challenges."
+st.markdown(
+    """
+    **Key Insights:**
+    - Better sleep quality is associated with fewer obstacles.
+    - Poor sleep is linked to higher learning challenges.
+    - Sleep is an important lifestyle factor in learning.
+    - Improving sleep may help reduce academic difficulties.
+    """
+)
+
+# -------------------------------
+# Conclusion
+# -------------------------------
+st.subheader("Conclusion")
+
+st.markdown(
+    """
+    **Conclusion:**  
+    The analysis indicates that sleep quality, learning obstacles, and support needs are closely related 
+    to students’ learning effectiveness. Better sleep and stronger support systems contribute to improved 
+    performance, while increased obstacles negatively affect learning outcomes. Enhancing lifestyle habits 
+    and support mechanisms can help improve students’ overall learning effectiveness.
+    """
 )
