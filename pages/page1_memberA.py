@@ -152,7 +152,6 @@ practice exercises and group study.
 
 st.markdown("---")
 
-
 # ==================================================
 # Visualization 4: Study Preference
 # ==================================================
