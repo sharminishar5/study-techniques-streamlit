@@ -3,14 +3,22 @@ import pandas as pd
 import plotly.express as px
 
 # -------------------------------
-# Load Data
+# Page Title & Objective
 # -------------------------------
 st.title("Visualizations of Sleep, Obstacles and Support Needs")
 
-df = pd.read_csv("cleaned_student_study_dataset_FINAL.csv")
+st.markdown(
+    """
+    **Objective:**  
+    To explore sleep patterns, learning obstacles, and support needs among students 
+    in order to understand how lifestyle factors and support systems influence learning effectiveness.
+    """
+)
 
-st.write("Dataset Preview")
-st.dataframe(df.head())
+# -------------------------------
+# Load Dataset
+# -------------------------------
+df = pd.read_csv("cleaned_student_study_dataset_FINAL.csv")
 
 # -------------------------------
 # 1. Bar Chart - Learning Obstacles vs Learning Effectiveness
@@ -37,9 +45,9 @@ fig_bar = px.bar(
 st.plotly_chart(fig_bar, use_container_width=True)
 
 st.write(
-    "This bar chart shows the average learning effectiveness at different levels of learning obstacles. "
-    "Students with lower obstacle levels generally demonstrate higher learning effectiveness. "
-    "As obstacles increase, a decline in learning effectiveness can be observed, indicating a negative relationship."
+    "This bar chart illustrates the average learning effectiveness across different levels of learning obstacles. "
+    "Students with fewer obstacles tend to achieve higher learning effectiveness. "
+    "As learning obstacles increase, learning effectiveness generally declines."
 )
 
 # -------------------------------
@@ -72,15 +80,15 @@ fig_pie = px.pie(
 st.plotly_chart(fig_pie, use_container_width=True)
 
 st.write(
-    "The pie chart illustrates the proportion of different support needs among students. "
-    "Certain support types dominate, indicating common challenges faced by students. "
-    "Less frequent support needs are grouped under 'Other' to maintain clarity."
+    "This pie chart shows the distribution of different support needs among students. "
+    "Certain types of support are more frequently required, indicating common challenges faced by students. "
+    "Less common support needs are grouped under 'Other' for clarity."
 )
 
 # -------------------------------
 # 3. Box Plot - Obstacles vs Learning Effectiveness
 # -------------------------------
-st.subheader("Box Plot: Learning Effectiveness vs Obstacles Index")
+st.subheader("Box Plot: Learning Effectiveness and Obstacles Index")
 
 box_df = df[["learning_effectiveness", "obstacles_index"]].melt(
     var_name="Variable",
@@ -97,9 +105,9 @@ fig_box = px.box(
 st.plotly_chart(fig_box, use_container_width=True)
 
 st.write(
-    "This box plot compares the distribution of learning effectiveness and obstacles index. "
-    "Learning effectiveness shows a wider spread, indicating variation in student performance. "
-    "The obstacles index distribution highlights differences in challenges experienced by students."
+    "The box plot compares the distribution of learning effectiveness and obstacles index. "
+    "Learning effectiveness shows greater variability among students. "
+    "The obstacles index reflects differences in the level of challenges experienced."
 )
 
 # -------------------------------
@@ -128,8 +136,8 @@ fig_line = px.line(
 st.plotly_chart(fig_line, use_container_width=True)
 
 st.write(
-    "The line chart shows how learning effectiveness changes across different support system levels. "
-    "An upward trend suggests that better support systems are associated with improved learning effectiveness. "
+    "This line chart demonstrates the relationship between support systems and learning effectiveness. "
+    "An increasing trend suggests that stronger support systems are associated with better learning outcomes. "
     "This highlights the importance of adequate academic and emotional support."
 )
 
@@ -153,6 +161,6 @@ st.plotly_chart(fig_scatter, use_container_width=True)
 
 st.write(
     "This scatter plot explores the relationship between sleep quality and learning obstacles. "
-    "Students with better sleep quality tend to report fewer learning obstacles. "
-    "Poor sleep quality appears to be associated with higher levels of academic challenges."
+    "Students with better sleep quality generally experience fewer learning obstacles. "
+    "Poor sleep quality appears to be linked with increased academic challenges."
 )
