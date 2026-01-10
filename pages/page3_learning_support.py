@@ -20,7 +20,7 @@ st.title("📊 Member C Case Study")
 st.subheader("Sleep, Learning Obstacles, and Support Needs")
 
 st.write("""
-This dashboard visualizes how **sleep quality**, **learning obstacles**, and **support systems**
+This dashboard examines how **sleep quality**, **learning obstacles**, and **support systems**
 influence **students’ learning effectiveness**.
 """)
 
@@ -60,8 +60,9 @@ st.pyplot(fig1)
 
 st.markdown("""
 **Interpretation:**  
-An increase in learning obstacles is generally associated with a decrease in
-students’ learning effectiveness.
+The bar chart illustrates the relationship between learning obstacles and students’ learning effectiveness.  
+As the level of learning obstacles increases, the average learning effectiveness generally shows a declining trend.  
+This suggests that higher academic or personal barriers negatively affect students’ ability to learn effectively.
 """)
 
 # ---------------------------------------------------
@@ -100,12 +101,13 @@ st.pyplot(fig2)
 
 st.markdown("""
 **Interpretation:**  
-Academic, emotional, and motivational supports are the most commonly required
-among students.
+The bar chart shows the most common types of support needed by students.  
+Academic, emotional, and motivational support appear as the most frequently requested forms of assistance.  
+This indicates that students require both academic guidance and emotional support to enhance their learning experience.
 """)
 
 # ---------------------------------------------------
-# 3. Boxplot: Learning Effectiveness vs Obstacles
+# 3. Learning Effectiveness vs Learning Obstacles (Boxplot)
 # ---------------------------------------------------
 st.header("3️⃣ Learning Effectiveness vs Learning Obstacles")
 
@@ -128,8 +130,9 @@ st.pyplot(fig3)
 
 st.markdown("""
 **Interpretation:**  
-The boxplot shows variation and outliers, indicating differences in obstacle levels
-and learning effectiveness among students.
+The boxplot compares the distribution of learning effectiveness and learning obstacles among students.  
+The presence of varying quartiles and outliers indicates differences in students’ learning conditions.  
+This variability suggests that some students experience significantly higher obstacles, which may impact their learning outcomes.
 """)
 
 # ---------------------------------------------------
@@ -159,7 +162,9 @@ st.pyplot(fig4)
 
 st.markdown("""
 **Interpretation:**  
-Higher support system levels are associated with better learning effectiveness.
+The line graph illustrates the relationship between support systems and learning effectiveness.  
+An upward trend is observed, indicating that learning effectiveness improves as support system levels increase.  
+This highlights the importance of strong support systems in enhancing students’ academic performance.
 """)
 
 # ---------------------------------------------------
@@ -183,7 +188,9 @@ st.pyplot(fig5)
 
 st.markdown("""
 **Interpretation:**  
-Poor sleep quality tends to be associated with higher learning obstacles.
+The scatter plot shows the relationship between sleep quality and learning obstacles.  
+Students with lower sleep quality tend to experience higher levels of learning obstacles.  
+This suggests that insufficient or poor-quality sleep may contribute to increased academic difficulties.
 """)
 
 # ---------------------------------------------------
