@@ -123,33 +123,35 @@ suggesting that active learning strategies are more beneficial than passive ones
 st.markdown("---")
 
 # ==================================================
-# Visualization 3: Frequency vs Effectiveness
+# Visualization 3: Relationship Between Frequency and Effectiveness (Heatmap)
 # ==================================================
 st.subheader("3️⃣ Relationship Between Frequency and Effectiveness")
 
-comparison = freq_means.merge(eff_means, on="Study Technique")
+corr_cols = [
+    "freq_reading","freq_practice","freq_group",
+    "eff_reading","eff_practice","eff_group"
+]
 
-fig3 = px.scatter(
-    comparison,
-    x="Average Frequency",
-    y="Effectiveness Score",
-    size="Effectiveness Score",
-    color="Effectiveness Score",
-    text="Study Technique",
-    title="Frequency vs Perceived Effectiveness of Study Techniques"
+corr_matrix = df[corr_cols].corr()
+
+fig3 = px.imshow(
+    corr_matrix,
+    text_auto=True,
+    color_continuous_scale="RdBu",
+    title="Correlation Between Study Technique Frequency and Effectiveness"
 )
-
-fig3.update_traces(textposition="top center")
 
 st.plotly_chart(fig3, use_container_width=True)
 
 st.markdown("""
 **Key Insight:**  
-Some techniques are frequently used but not perceived as highly effective,
-indicating a gap between students’ study habits and optimal learning strategies.
+Positive correlations indicate that study techniques used more frequently tend to be
+perceived as more effective, particularly for active learning strategies such as
+practice exercises and group study.
 """)
 
 st.markdown("---")
+
 
 # ==================================================
 # Visualization 4: Study Preference
