@@ -40,7 +40,7 @@ fig_bar = px.bar(
         "learning_effectiveness": "Average Learning Effectiveness"
     },
     title="Learning Obstacles vs Learning Effectiveness"
-    color_discrete_sequence=["#1f77b4"]  # Blue
+
 )
 
 st.plotly_chart(fig_bar, use_container_width=True)
