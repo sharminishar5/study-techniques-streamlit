@@ -98,7 +98,7 @@ st.markdown("### 📝 Survey Structure")
 st.markdown(
     """
     - **Part A:** Demographic Information  
-    - **Part B:** Study Techniques & Learning Habits  
+    - **Part B:** Study Techniques & Learning Habits 
     - **Part C:** Learning Challenges & Support Needs
     """
 )
